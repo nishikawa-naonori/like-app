@@ -16,11 +16,10 @@
       <tr>
         <td><%= post.title %></td>
 
-        <%# 以下を追記 %>
-        <% if current_user.favorited_by?(post.id) %>
-          <td><%= link_to 'いいね外す', destroy_like_path(post), method: :DELETE %> <%= post.likes.count %></td>
+        <% if current_user.liked_by?(post.id) %>
+          <td><%= link_to 'いいね外す', destroy_like_path(post), method: :DELETE %><%= post.likes.count %></td>
         <% else %>
-          <td><%= link_to 'いいねする', create_like_path(post), method: :POST %> <%= post.likes.count %></td>
+          <td><%= link_to 'いいね', create_like_path(post), method: :POST %><%= post.likes.count %></td>
         <% end %>
 
         <td><%= link_to 'Show', post %></td>
