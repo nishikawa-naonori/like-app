@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
-  resources :posts do 
-    resources :likes, only: [:create, :destroy]
-  end
-  
+  resources :posts
   post 'like/:id' => 'likes#create', as: 'create_like'
 
   # 以下の1行を追記
